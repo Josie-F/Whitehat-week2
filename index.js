@@ -45,7 +45,7 @@ function insertItems(menu_id, items, menus, restaurants, restaurant_id, cb) {
 function load(cb) {
     db.run('CREATE TABLE IF NOT EXISTS restaurants(id INTEGER PRIMARY KEY, name TEXT);')
     db.run('CREATE TABLE IF NOT EXISTS menus(id INTEGER PRIMARY KEY, title TEXT, restaurant_id INTEGER);')
-    db.run('CREATE TABLE IF NOT EXISTS items(id INTEGER PRIMARY KEY, name TEXT, price FLOAT);')
+    db.run('CREATE TABLE IF NOT EXISTS items(id INTEGER PRIMARY KEY, name TEXT, price FLOAT, menu_id INTEGER);')
     insertRestaurants(restaurants, cb)
     
 }
