@@ -2,9 +2,6 @@ const db = require('./db')
 const restaurants = require('./restaurants.json')
 
 
-
-
-
 function insertRestaurants(restaurants, cb) {
 
     if(!restaurants.length) return cb()
