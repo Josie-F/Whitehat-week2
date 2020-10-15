@@ -17,7 +17,7 @@ class Menu {
     constructor(data) {
         const menu = this
         menu.title = data.title
-        menu.restaurant_id = data.id
+        menu.restaurant_id = data.restaurant_id
         menu.id = data.id
 
         if (data.id) {

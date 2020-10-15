@@ -17,7 +17,7 @@ class Item {
     constructor(data) {
         const item = this
         item.name = data.name
-        item.menu_id = data.id
+        item.menu_id = data.menu_id
         item.id = data.id
         item.price = data.price
 
