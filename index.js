@@ -11,9 +11,13 @@ function insertRestaurants(restaurants, cb) {
     db.run(`INSERT INTO restaurants(name) VALUES('${name}')`, function (err) {
     const restaurant_id=this.lastID
 
-       insertMenus(restaurant_id,menus,restaurants, cb) 
+       insertMenus(restaurant_id,menus,restaurants,() => { 
+           insertRestaurants(restaurants, cb) 
+        }) 
+          
+       }) 
        
-    }) 
+     
 }
 
 function insertMenus(restaurant_id, menus, restaurants, cb) {
@@ -23,7 +27,10 @@ function insertMenus(restaurant_id, menus, restaurants, cb) {
     const items = menu.items
     db.run(`INSERT INTO menus(title, restaurant_id) VALUES('${title}', '${restaurant_id}')`, function (err) {
         const menu_id=this.lastID
-        insertItems(menu_id, items, menus, restaurants, restaurant_id, cb)
+        insertItems(menu_id, items, menus, restaurants, restaurant_id, ()=> {
+            insertMenus(restaurant_id, menus, restaurants, cb)
+        })
+            
           
 })
 }
